@@ -33,6 +33,10 @@ h3{
     color: var(--main-green-color);
 }
 
+.nav{
+    min-width: 300px;
+}
+
 .nav fieldset input[type=radio], 
 .commandersDevice input[type=checkbox], 
 .modernization input[type=checkbox]{
