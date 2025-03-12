@@ -165,6 +165,7 @@ const addEventListeners = () =>{
         enemyTank = buffer;
 
         showTanksProperty();
+        drawUpdate();
     })
 }
 
