@@ -1,0 +1,11 @@
+export const VISIBILITYCOLOR = 'green';
+export const MAXVISIBILITY = 445;
+export const MAXVISIBILITYCOLOR = 'white';
+export const MAXDISTANCE = 565;
+export const MAXDISTANCECOLOR = 'yellow';
+export const ROENTGEN = 50;
+export const ROENTGENCOLOR = 'yellow';
+export const MAXDISGUISE = 80;
+export const TREEDISGUISE = 50;
+export const DRYTREEDISGUISE = 25;
+export const MAPSIZE = 1000;

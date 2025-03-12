@@ -1,0 +1,213 @@
+:root{
+    --main-white-color: #e4e4e4;
+    --main-green-color: #00aa17;
+    --main-red-color: #990000;
+}
+
+body{
+    background-color: black;
+}
+
+.container{
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1{
+    color: var(--main-white-color);
+    font-size: 30px;
+    padding: 5px;
+}
+
+h3{
+    color: var(--main-white-color);
+    text-align: start;
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+#distance{
+    font-size: 30px;
+    color: var(--main-green-color);
+}
+
+.nav fieldset input[type=radio], 
+.commandersDevice input[type=checkbox], 
+.modernization input[type=checkbox]{
+    display: none;
+}
+
+.info{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.map-radios{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+#map{
+    background-image: url(../imgs/Малиновка_миникарта.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.inputForm{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.input-label{
+    padding: 7px;
+}
+
+.input-h{
+    padding-bottom: 10px;
+}
+
+.input-h_main{
+    color: var(--main-green-color);
+}
+
+.input-h_enemy{
+    color: var(--main-red-color);
+}
+
+.input{
+    background-color: #64646417;
+    padding: 5px 10px;
+    text-align: center;
+    border: none;
+    color: var(--main-white-color);
+}
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+}
+
+.input-label_main{
+    color: var(--main-green-color);
+}
+
+.input-label_enemy{
+    color: var(--main-red-color);
+}
+
+#swap{
+    color: orange;
+    padding: 10px 15px;
+}
+
+.nav fieldset label{
+    color: var(--main-white-color);
+    width: 100%;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.nav fieldset label::before{
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 15px;
+    margin-right: 5px;
+    background-color: var(--main-red-color);
+    transition: background-color 0.2s, width 0.2s;
+}
+
+.nav fieldset input:checked + label::before{
+    background-color: var(--main-green-color);
+    width: 15px;
+    height: 15px;
+}
+
+.modernization{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.commandersDeviceSlot:checked + label{
+    background-color: orange;
+}
+
+.modernization__image{
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    filter: brightness(30%);
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    cursor: pointer;
+}
+
+.modernizationSlot:checked + label{
+    filter: none;
+}
+
+.modernization__image_left{
+    background-image: url(../imgs/improvedReflexScopes_disabled.png);
+}
+
+.modernization__image_right{
+    background-image: url(../imgs/improvedSharpnessVisor_disabled.png);
+}
+
+.input-image_active{
+    filter: none;
+}
+
+.commandersDevice{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.commandersDevice__img{
+    margin-top: 10px;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-image: url(../imgs/commandersView.png);
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    cursor: pointer;
+    filter: brightness(20%);
+}
+
+input:checked + .commandersDevice__img{
+    filter: none;
+}
+
+.commandersDeviceSlot__img{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    mask-image: url(../imgs/scouting.svg);
+    mask-position: center; 
+    mask-repeat: no-repeat; 
+    mask-size: cover;
+    background-color: gray;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
