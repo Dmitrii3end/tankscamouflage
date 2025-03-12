@@ -25,8 +25,8 @@ const map = {
     isAttack: false,
 }
 
-const mainTank = new Tank(522, 51.21, 9.22, 51.21, 9.22, true, true, false, true);
-const enemyTank = new Tank();
+let mainTank = new Tank(522, 51.21, 9.22, 51.21, 9.22, true, true, false, true);
+let enemyTank = new Tank();
 
 const canvas = document.querySelector('#map');
 const ctx = canvas.getContext("2d");
@@ -158,6 +158,14 @@ const addEventListeners = () =>{
             dropTankModernization(enemyTank);
         }
     });
+
+    document.querySelector('#swap').addEventListener('click', (e) => {
+        let buffer = mainTank;
+        mainTank = enemyTank;
+        enemyTank = buffer;
+
+        showTanksProperty();
+    })
 }
 
 function dropTankModernization(tank, modernization){

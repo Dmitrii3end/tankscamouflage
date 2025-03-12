@@ -211,3 +211,8 @@ input:checked + .commandersDevice__img{
     transition: background-color 0.2s;
     cursor: pointer;
 }
+
+#swap{
+    padding: 20px;
+    font-size: 20px;
+}
