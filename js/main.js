@@ -1,5 +1,5 @@
 import { ROENTGEN, ROENTGENCOLOR, MAXVISIBILITY, MAXVISIBILITYCOLOR, MAPSIZE, 
-    MAXDISTANCE, MAXDISTANCECOLOR, MAXDISGUISE, TREEDISGUISE, DRYTREEDISGUISE } from "./const.js"
+    MAXDISTANCE, MAXDISTANCECOLOR, MAXDISGUISE, TREEDISGUISE, DRYTREEDISGUISE } from "./const.js";
 import Tank from "./tank.js";
 
 const map = {
@@ -159,13 +159,13 @@ const addEventListeners = () =>{
         }
     });
 
-    document.querySelector('#swap').addEventListener('click', (e) => {
+
+    addEventListener('#swap', 'click', (e) => {
         let buffer = mainTank;
         mainTank = enemyTank;
         enemyTank = buffer;
 
         showTanksProperty();
-        drawUpdate();
     })
 }
 
@@ -175,10 +175,8 @@ function dropTankModernization(tank, modernization){
 
     if (modernization == 'left'){
         tank.isLeftModernization = true;
-        
     } else if (modernization == 'right'){
         tank.isRightModernization = true;
-        
     }
 }
 
@@ -246,31 +244,29 @@ function changeTankProperty(tank, key, value){
 
 function getEnemyXPos(){
     let mapDisguise = 0;
+    let mapDisguisePersent = 0;
     
     let enemyDisguise = enemyTank.disguise;
+    let enemyDisguisePersent = 0;
     
     if (map.isMovieng){
         enemyDisguise = map.isAttack ? enemyTank.disguiseWithMoveAndAttack : enemyTank.disguiseWithMove;
 
         if (mainTank.isHaveCommandersDevice){
-            enemyDisguise -= 10;
+            enemyDisguisePersent += 10;
 
             if (mainTank.isCommandersDeviceInSlot){
-                enemyDisguise -= 2.5;
+                enemyDisguisePersent += 2.5;
             }
         }
 
         if (mainTank.isLeftModernization){
-            enemyDisguise -= 2.62;
+            enemyDisguisePersent += 2.62;
         } else if (mainTank.isRightModernization){
-            enemyDisguise += 2.62;
+            enemyDisguisePersent -= 2.62;
         }
     } else{
         enemyDisguise = map.isAttack ? enemyTank.disguiseWithAttack : enemyTank.disguise;
-    }
-
-    if (enemyDisguise < 0){
-        enemyDisguise = 0;
     }
 
     if (map.isManyTree){
@@ -285,23 +281,22 @@ function getEnemyXPos(){
 
     if (mapDisguise > 0){
         if (mainTank.isRightModernization){
-            mapDisguise -= 2.4;
+            mapDisguisePersent += 2.4;
         } else if (mainTank.isLeftModernization){
-            mapDisguise += 2.4;
+            mapDisguisePersent -= 2.4;
         }
 
         if (mainTank.isHaveCommandersDevice){
-            mapDisguise -= 15;
+            mapDisguisePersent += 15;
     
             if (mainTank.isCommandersDeviceInSlot){
-                mapDisguise -= 5;
+                mapDisguisePersent += 5;
             }
         }
-
-        if (mapDisguise < 0){
-            mapDisguise = 0;
-        }
     }
+
+    enemyDisguise = enemyDisguise - enemyDisguise * enemyDisguisePersent / 100;
+    mapDisguise = mapDisguise - mapDisguise * mapDisguisePersent / 100;
 
     let disguise = enemyDisguise + mapDisguise;
 
@@ -317,7 +312,6 @@ function getEnemyXPos(){
 
     return posX;
 }
-
 
 function drawUpdate(){
     ctx.clearRect(0, 0, map.width, map.height);

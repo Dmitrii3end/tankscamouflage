@@ -67,6 +67,7 @@ h3{
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: start;
 }
 
 .inputForm{
@@ -97,7 +98,13 @@ h3{
     padding: 5px 10px;
     text-align: center;
     border: none;
+    border-radius: 5px;
     color: var(--main-white-color);
+    transition: background-color 0.2s;
+}
+
+.input:hover, .input:focus{
+    background-color: #bebebe17;
 }
 
 input[type="number"]::-webkit-inner-spin-button, 
@@ -124,6 +131,10 @@ input[type="number"]::-webkit-outer-spin-button{
     font-size: 20px;
     padding: 5px;
     cursor: pointer;
+}
+
+.nav fieldset label:hover{
+    text-shadow: 0 0 1px white;
 }
 
 .nav fieldset label::before{
@@ -164,6 +175,10 @@ input[type="number"]::-webkit-outer-spin-button{
     cursor: pointer;
 }
 
+.modernization__image:hover{
+    border: 1px solid var(--main-white-color);
+}
+
 .modernizationSlot:checked + label{
     filter: none;
 }
@@ -199,6 +214,10 @@ input[type="number"]::-webkit-outer-spin-button{
     filter: brightness(20%);
 }
 
+.commandersDevice__img:hover{
+    border: 1px solid var(--main-white-color);
+}
+
 input:checked + .commandersDevice__img{
     filter: none;
 }
@@ -212,11 +231,21 @@ input:checked + .commandersDevice__img{
     mask-repeat: no-repeat; 
     mask-size: cover;
     background-color: gray;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
     cursor: pointer;
 }
 
+.commandersDeviceSlot__img:hover{
+    transform: scale(1.2);
+}
+
 #swap{
-    padding: 20px;
+    margin-top: 20px;
+    padding: 20px 40px;
     font-size: 20px;
+    transition: transform 0.2s;
+}
+
+#swap:hover{
+    transform: scale(1.2);
 }
