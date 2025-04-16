@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./imgs/tank-icon.png" type="image/x-icon">
+    <title>Танковый помощник</title>
+  <script type="module" crossorigin src="/assets/index-ZIlmqn2F.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-COk_ukY9.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <h1>Обнаружение танка</h1>
+    
+            <section class="info">
+                <canvas width="400" height="400" id="map"></canvas>
+
+                <form class="nav">
+                    <h3>Дистанция засвета: <span id="distance">321</span>м</h3>
+                    <fieldset class="map-radios">
+                        <input checked name="tree" type="radio" id="manyTree">
+                        <label for="manyTree">Много деревьев</label>
+        
+                        <input name="tree" type="radio" id="treeAndDryTree">
+                        <label for="treeAndDryTree">Дерево + сухое дерево</label>
+        
+                        <input name="tree" type="radio" id="tree">
+                        <label for="tree">Дерево</label>
+        
+                        <input name="tree" type="radio" id="dryTree">
+                        <label for="dryTree">Сухое дерево</label>
+        
+                        <input name="tree" type="radio" id="clear">
+                        <label for="clear">Поле</label>
+                    </fieldset>
+
+                    <fieldset class="map-radios">
+                        <input checked name="movieng" type="radio" id="isNotMovieng">
+                        <label for="isNotMovieng">Вражеский танк НЕ движется</label>
+                        
+                        <input name="movieng" type="radio" id="isMovieng">
+                        <label for="isMovieng">Вражеский танк движется</label>
+                    </fieldset>
+                    
+                    <fieldset class="map-radios">
+                        <input checked name="attack" type="radio" id="isNotAttack">
+                        <label for="isNotAttack">Вражеский танк НЕ стреляет</label>
+                        
+                        <input name="attack" type="radio" id="isAttack">
+                        <label for="isAttack">Вражеский танк стреляет</label>
+                    </fieldset>
+                </form>
+            </section>
+
+            <div class="wrapper">
+                <form class="inputForm">
+                    <h2 class="input-h input-h_main">Характеристики моего танка:</h2>
+
+                    <div class="name">
+                        <div id="mainTankSelect" class="input-select">
+                            <input id="nameMainTank" class="input nameInput" type="text" placeholder="Название танка">
+                            
+                            <div class="select__options ">
+                                <div class="option">Manticore</div>
+                                <div class="option">Manticore</div>
+                                <div class="option">Manticore</div>
+                                <div class="option">Manticore</div>
+                                <div class="option">Manticore</div>
+                                <div class="option">Manticore</div>
+                                <div class="option">Manticore</div>
+                            </div>
+                        </div>
+                        <button class="saveButton" id="saveMainTank">сохранить</button>
+                        <button class="deleteButton" id="deleteMainTank"></button>
+                    </div>
+    
+                    <label class="input-label input-label_main" for="mainTankVisibility">Обзор танка:</label>
+                    <input type="number" class="input" id="mainTankVisibility">
+    
+                    <label class="input-label input-label_main" for="mainTankDisguise">Маскировка танка на месте:</label>
+                    <input type="number" class="input" id="mainTankDisguise">
+                    
+                    <label class="input-label input-label_main" for="mainTankDisguiseWithAttack">Маскировка танка во время атаки на месте:</label>
+                    <input type="number" class="input" id="mainTankDisguiseWithAttack">
+    
+                    <label class="input-label input-label_main" for="mainTankDisguiseWithMove">Маскировка танка во время движения:</label>
+                    <input type="number" class="input" id="mainTankDisguiseWithMove">
+    
+                    <label class="input-label input-label_main" for="mainTankDisguiseWithMoveAndAttack">Маскировка танка во время движения и атаки:</label>
+                    <input type="number" class="input" id="mainTankDisguiseWithMoveAndAttack">
+    
+                    <div class="commandersDevice">
+                        <input class="commandersDevice" type="checkbox" name="" id="mainCommandersDevice">
+                        <label for="mainCommandersDevice" class="commandersDevice__img"></label>
+
+                        <input class="commandersDeviceSlot" type="checkbox" name="" id="mainCommandersDeviceSlot">
+                        <label for="mainCommandersDeviceSlot" class="commandersDeviceSlot__img"></label>
+                    </div>
+
+                    <div class="modernization">
+                        <input class="modernizationSlot" type="checkbox" id="mainLeftModernization">
+                        <label for="mainLeftModernization" class="modernization__image modernization__image_left"></label>
+
+                        <input class="modernizationSlot" type="checkbox" id="mainRightModernization">
+                        <label for="mainRightModernization" class="modernization__image modernization__image_right"></label>
+                    </div>
+                </form>
+
+                <button id="swap">реверс</button>
+
+                <form class="inputForm">
+                    <h2 class="input-h input-h_enemy">Характеристики вражеского танка:</h2>
+
+                    <label class="input-label input-label_enemy" for="enemyTankVisibility">Обзор танка:</label>
+                    <input type="number" class="input" id="enemyTankVisibility">
+    
+                    <label class="input-label input-label_enemy" for="enemyTankDisguise">Маскировка танка на месте:</label>
+                    <input type="number" class="input" id="enemyTankDisguise">
+                    
+                    <label class="input-label input-label_enemy" for="enemyTankDisguiseWithAttack">Маскировка танка во время атаки на месте:</label>
+                    <input type="number" class="input" id="enemyTankDisguiseWithAttack">
+    
+                    <label class="input-label input-label_enemy" for="enemyTankDisguiseWithMove">Маскировка танка во время движения:</label>
+                    <input type="number" class="input" id="enemyTankDisguiseWithMove">
+    
+                    <label class="input-label input-label_enemy" for="enemyTankDisguiseWithMoveAndAttack">Маскировка танка во время движения и атаки:</label>
+                    <input type="number" class="input" id="enemyTankDisguiseWithMoveAndAttack">
+    
+                    <div class="commandersDevice">
+                        <input class="commandersDevice" type="checkbox" name="" id="enemyCommandersDevice">
+                        <label for="enemyCommandersDevice" class="commandersDevice__img"></label>
+
+                        <input class="commandersDeviceSlot" type="checkbox" name="" id="enemyCommandersDeviceSlot">
+                        <label for="enemyCommandersDeviceSlot" class="commandersDeviceSlot__img"></label>
+                    </div>
+
+                    <div class="modernization">
+                        <input class="modernizationSlot" type="checkbox" id="enemyLeftModernization">
+                        <label for="enemyLeftModernization" class="modernization__image modernization__image_left"></label>
+
+                        <input class="modernizationSlot" type="checkbox" id="enemyRightModernization">
+                        <label for="enemyRightModernization" class="modernization__image modernization__image_right"></label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+
+</body>
+</html>
